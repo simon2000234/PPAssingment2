@@ -192,7 +192,11 @@ namespace PPAssingment2
                     Parallel.ForEach(
                         Partitioner.Create(0, 100000000),
                         new ParallelOptions(),
-                        () => { return new Random(420); },
+                        () =>
+                        {
+                            return new Random(420 /** This should be a new randon generated number 
+                                                       *each time or else it will be the same sequence again and again**/);
+                        },
                         (range, loopState, random) =>
                         {
                             for (int i = range.Item1; i < range.Item2; i++)
@@ -220,7 +224,7 @@ namespace PPAssingment2
                 _ => { });
 
 
-            
+
             TimeAction(() =>
             {
                 for (int i = 0; i < array.Length; i++)
