@@ -242,7 +242,7 @@ namespace PPAssingment2
             TimeAction(() =>
             {
                 Parallel.ForEach(Partitioner.Create(0, array.Length),
-                    (range) =>
+                    (range, loopState) =>
                     {
                         for (int i = range.Item1; i < range.Item2; i++)
                         {
@@ -255,7 +255,7 @@ namespace PPAssingment2
                                         savedIndex = i;
                                     }
                                 }
-                                break;
+                                loopState.Break();
                             }
                         }
                     });
